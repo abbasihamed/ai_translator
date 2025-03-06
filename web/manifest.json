@@ -1,11 +1,11 @@
 {
     "manifest_version": 3,
-    "name": "My Flutter Extension",
+    "name": "AI Translator",
     "version": "1.0",
     "description": "A Flutter-based Chrome extension",
     "action": {
       "default_popup": "index.html",
-      "default_icon": "/icons/Icon-192.png"
+      "default_icon": "favicon.png"
     },
     "permissions": [
       "storage",
