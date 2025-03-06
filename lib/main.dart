@@ -1,3 +1,4 @@
+import 'package:extension_test/blocs/theme_bloc/theme_bloc.dart';
 import 'package:extension_test/blocs/translate_bloc/translate_bloc.dart';
 import 'package:extension_test/screens/translator_screen.dart';
 import 'package:extension_test/services/gemini_service.dart';
@@ -18,29 +19,34 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => ThemeBloc()..add(LoadThemeEvent())),
         BlocProvider(
           create: (context) => TranslationBloc(GeminiService()),
         ),
       ],
-      child: MaterialApp(
-        title: 'AI Translator',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.blue,
-            brightness: Brightness.light,
-          ),
-          useMaterial3: true,
-        ),
-        darkTheme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.blue,
-            brightness: Brightness.dark,
-          ),
-          useMaterial3: true,
-        ),
-        themeMode: ThemeMode.dark,
-        home: const TranslatorScreen(),
+      child: BlocBuilder<ThemeBloc, ThemeState>(
+        builder: (context, state) {
+          return MaterialApp(
+            title: 'AI Translator',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: Colors.blue,
+                brightness: Brightness.light,
+              ),
+              useMaterial3: true,
+            ),
+            darkTheme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: Colors.blue,
+                brightness: Brightness.dark,
+              ),
+              useMaterial3: true,
+            ),
+            themeMode: state.themeMode,
+            home: const TranslatorScreen(),
+          );
+        },
       ),
     );
   }

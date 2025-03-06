@@ -1,3 +1,4 @@
+import 'package:extension_test/blocs/theme_bloc/theme_bloc.dart';
 import 'package:extension_test/blocs/translate_bloc/translate_bloc.dart';
 import 'package:extension_test/widgets/language_dropdown.dart';
 import 'package:flutter/material.dart';
@@ -53,25 +54,25 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
             child: Text(
               "Contact",
               style: TextStyle(
-                color: Colors.white,
+                // color: Colors.white,
                 fontWeight: FontWeight.w500,
               ),
             ),
           ),
         ),
-        // actions: [
-        //   BlocBuilder<ThemeBloc, ThemeState>(
-        //     builder: (context, state) {
-        //       return IconButton(
-        //         icon: Icon(state.themeMode == ThemeMode.dark
-        //             ? Icons.light_mode
-        //             : Icons.dark_mode),
-        //         onPressed: () =>
-        //             context.read<ThemeBloc>().add(ToggleThemeEvent()),
-        //       );
-        //     },
-        //   ),
-        // ],
+        actions: [
+          BlocBuilder<ThemeBloc, ThemeState>(
+            builder: (context, state) {
+              return IconButton(
+                icon: Icon(state.themeMode == ThemeMode.dark
+                    ? Icons.light_mode
+                    : Icons.dark_mode),
+                onPressed: () =>
+                    context.read<ThemeBloc>().add(ToggleThemeEvent()),
+              );
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Container(
