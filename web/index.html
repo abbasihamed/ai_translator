@@ -2,20 +2,7 @@
 <html style="height: 600px; width: 400px;">
 
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="$FLUTTER_BASE_HREF">
+  <base href="/ai_translator_github.io/">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -34,54 +21,39 @@
   <link rel="manifest" href="manifest.json">
   <script defer src="index.dart.js" type="application/javascript"></script>
   <style>
+    body {
+      background-color: #2C2C2C;
+      margin: 0;
+      padding: 0;
+    }
+
     .loading {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 0;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
+      height: 100vh;
+      color: white;
+      font-family: Arial, sans-serif;
+      font-size: 20px;
     }
-    
-    .loader {
-      border: 16px solid #f3f3f3;
-      border-radius: 50%;
-      border-top: 16px solid blue;
-      border-right: 16px solid green;
-      border-bottom: 16px solid red;
-      border-left: 16px solid pink;
-      width: 120px;
-      height: 120px;
-      -webkit-animation: spin 2s linear infinite;
-      animation: spin 2s linear infinite;
+
+    .dots:after {
+      content: '';
+      animation: dots 1.5s steps(5, end) infinite;
     }
-    
-    @-webkit-keyframes spin {
-      0% {
-        -webkit-transform: rotate(0deg);
-      }
-      100% {
-        -webkit-transform: rotate(360deg);
-      }
-    }
-    
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
+
+    @keyframes dots {
+      0%, 20% { content: ''; }
+      40% { content: '.'; }
+      60% { content: '..'; }
+      80%, 100% { content: '...'; }
     }
   </style>
 </head>
 
 <body>
   <div class="loading">
-    <div class="loader"></div>
+    <span>Loading<span class="dots"></span></span>
   </div>
   <script src="flutter_bootstrap.js" async></script>
 </body>
