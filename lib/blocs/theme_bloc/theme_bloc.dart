@@ -17,7 +17,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
     Emitter<ThemeState> emit,
   ) async {
     final prefs = await SharedPreferences.getInstance();
-    final themeIndex = prefs.getInt('themeMode') ?? 0;
+    final themeIndex = prefs.getInt('themeMode') ?? 2;
     emit(ThemeState(ThemeMode.values[themeIndex]));
   }
 

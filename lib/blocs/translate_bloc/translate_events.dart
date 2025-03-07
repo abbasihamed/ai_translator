@@ -1,8 +1,5 @@
 part of './translate_bloc.dart';
 
-
-
-
 abstract class TranslationEvent extends Equatable {
   const TranslationEvent();
 
