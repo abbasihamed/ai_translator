@@ -1,0 +1,2 @@
+E:/flutter_project/ai_translator/android/app/.cxx/RelWithDebInfo/5v5l5t5j/x86_64/CMakeFiles/edit_cache.dir
+E:/flutter_project/ai_translator/android/app/.cxx/RelWithDebInfo/5v5l5t5j/x86_64/CMakeFiles/rebuild_cache.dir
