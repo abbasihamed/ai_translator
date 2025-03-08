@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "extension name",
+    "name": "AI Translator",
     "version": "1.0",
     "description": "A Flutter-based Chrome extension",
     "action": {

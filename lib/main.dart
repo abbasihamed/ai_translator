@@ -1,7 +1,7 @@
-import 'package:extension_test/blocs/theme_bloc/theme_bloc.dart';
-import 'package:extension_test/blocs/translate_bloc/translate_bloc.dart';
-import 'package:extension_test/screens/translator_screen.dart';
-import 'package:extension_test/services/gemini_service.dart';
+import 'package:ai_translator/blocs/theme_bloc/theme_bloc.dart';
+import 'package:ai_translator/blocs/translate_bloc/translate_bloc.dart';
+import 'package:ai_translator/screens/translator_screen.dart';
+import 'package:ai_translator/services/gemini_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -20,9 +20,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ThemeBloc()..add(LoadThemeEvent())),
-        BlocProvider(
-          create: (context) => TranslationBloc(GeminiService()),
-        ),
+        BlocProvider(create: (context) => TranslationBloc(GeminiService())),
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, state) {

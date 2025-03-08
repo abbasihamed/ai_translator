@@ -1,7 +1,7 @@
-import 'package:extension_test/blocs/theme_bloc/theme_bloc.dart';
-import 'package:extension_test/blocs/translate_bloc/translate_bloc.dart';
-import 'package:extension_test/widgets/language_dropdown.dart';
-import 'package:extension_test/widgets/translated_text.dart';
+import 'package:ai_translator/blocs/theme_bloc/theme_bloc.dart';
+import 'package:ai_translator/blocs/translate_bloc/translate_bloc.dart';
+import 'package:ai_translator/widgets/language_dropdown.dart';
+import 'package:ai_translator/widgets/translated_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';

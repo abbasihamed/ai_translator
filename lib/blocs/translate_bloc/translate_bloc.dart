@@ -1,4 +1,4 @@
-import 'package:extension_test/services/gemini_service.dart';
+import 'package:ai_translator/services/gemini_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -27,9 +27,9 @@ class TranslationBloc extends Bloc<TranslationEvent, TranslationState> {
       }
 
       final translation = await _geminiService.translateText(
-         event.text,
-         event.sourceLanguage,
-         event.targetLanguage,
+        event.text,
+        event.sourceLanguage,
+        event.targetLanguage,
       );
 
       if (translation.trim().isEmpty) {

@@ -1,4 +1,4 @@
-package com.example.extension_test
+package com.example.ai_translator
 
 import io.flutter.embedding.android.FlutterActivity
 
