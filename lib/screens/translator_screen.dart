@@ -1,3 +1,4 @@
+import 'package:ai_translator/blocs/speech_bloc/speech_bloc.dart';
 import 'package:ai_translator/blocs/theme_bloc/theme_bloc.dart';
 import 'package:ai_translator/blocs/translate_bloc/translate_bloc.dart';
 import 'package:ai_translator/widgets/language_dropdown.dart';
@@ -134,15 +135,39 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
                 ],
               ),
               const SizedBox(height: 16),
-              TextField(
-                controller: _textController,
-                maxLines: 5,
-                decoration: InputDecoration(
-                  hintText: 'Enter text to translate',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
+              BlocConsumer<SpeechBloc, SpeechState>(
+                listener: (context, state) {
+                  if (state is SpeechLoaded) {
+                    _textController.text = state.recognizedWords;
+                    setState(() {});
+                  }
+                },
+                builder: (context, state) {
+                  return Stack(
+                    children: [
+                      TextField(
+                        controller: _textController,
+                        maxLines: 5,
+                        decoration: InputDecoration(
+                          hintText: 'Enter text to translate',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: IconButton(
+                          icon: const Icon(Icons.mic_none_outlined),
+                          onPressed: () {
+                            context.read<SpeechBloc>().add(StartSpeechEvent());
+                          },
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
               const SizedBox(height: 16),
               BlocBuilder<TranslationBloc, TranslationState>(
