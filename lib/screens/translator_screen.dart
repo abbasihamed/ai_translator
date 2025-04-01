@@ -137,7 +137,7 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
               const SizedBox(height: 16),
               BlocConsumer<SpeechBloc, SpeechState>(
                 listener: (context, state) {
-                  if (state is SpeechLoaded) {
+                  if (state is SpeechLoading) {
                     _textController.text = state.recognizedWords;
                     setState(() {});
                   }
@@ -159,9 +159,17 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
                         bottom: 0,
                         right: 0,
                         child: IconButton(
-                          icon: const Icon(Icons.mic_none_outlined),
+                          icon: Icon(
+                            state is SpeechLoading
+                                ? Icons.stop
+                                : Icons.mic_none_outlined,
+                          ),
                           onPressed: () {
-                            context.read<SpeechBloc>().add(StartSpeechEvent());
+                            if (state is! SpeechLoading) {
+                              context.read<SpeechBloc>().add(
+                                StartSpeechEvent(),
+                              );
+                            }
                           },
                         ),
                       ),

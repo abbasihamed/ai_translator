@@ -9,6 +9,13 @@ sealed class SpeechState extends Equatable {
 
 final class SpeechInitial extends SpeechState {}
 
+final class SpeechLoading extends SpeechState {
+  final String recognizedWords;
+  const SpeechLoading(this.recognizedWords);
+  @override
+  List<Object> get props => [recognizedWords];
+}
+
 final class SpeechLoaded extends SpeechState {
   final String recognizedWords;
   const SpeechLoaded(this.recognizedWords);

@@ -17,3 +17,5 @@ final class _SpeechWordEvent extends SpeechEvent {
   @override
   List<Object> get props => [recognizedWords];
 }
+
+final class StopSpeechEvent extends SpeechEvent {}
