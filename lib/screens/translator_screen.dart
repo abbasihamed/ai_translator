@@ -169,6 +169,8 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
                               context.read<SpeechBloc>().add(
                                 StartSpeechEvent(),
                               );
+                            } else {
+                              context.read<SpeechBloc>().add(StopSpeechEvent());
                             }
                           },
                         ),
