@@ -49,5 +49,9 @@
 	<string>This app needs camera access to scan text for translation</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app needs photo library access to save scanned images</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This app does not need microphone access</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>This app needs photo library access to save cropped images</string>
 </dict>
 </plist>

@@ -3,6 +3,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
+import 'package:image_cropper/image_cropper.dart';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({super.key});
@@ -67,6 +68,34 @@ class _CameraScreenState extends State<CameraScreen> {
     }
   }
 
+  Future<String?> _cropImage(String imagePath) async {
+    final croppedFile = await ImageCropper().cropImage(
+      sourcePath: imagePath,
+      // aspectRatioPresets: [
+      //   CropAspectRatioPreset.square,
+      //   CropAspectRatioPreset.ratio3x2,
+      //   CropAspectRatioPreset.original,
+      //   CropAspectRatioPreset.ratio4x3,
+      //   CropAspectRatioPreset.ratio16x9,
+      // ],
+      uiSettings: [
+        AndroidUiSettings(
+          toolbarTitle: 'Crop Image',
+          toolbarColor: Theme.of(context).primaryColor,
+          toolbarWidgetColor: Colors.white,
+          initAspectRatio: CropAspectRatioPreset.original,
+          lockAspectRatio: false,
+        ),
+        IOSUiSettings(title: 'Crop Image'),
+      ],
+    );
+
+    if (croppedFile != null) {
+      return croppedFile.path;
+    }
+    return null;
+  }
+
   @override
   void dispose() {
     _controller.dispose();
@@ -94,13 +123,16 @@ class _CameraScreenState extends State<CameraScreen> {
                   try {
                     final imagePath = await _takePicture();
                     if (mounted) {
-                      final result = await Navigator.pushNamed(
-                        context,
-                        '/text_review',
-                        arguments: imagePath,
-                      );
-                      if (result != null && mounted) {
-                        Navigator.pop(context, result);
+                      final croppedImagePath = await _cropImage(imagePath);
+                      if (croppedImagePath != null && mounted) {
+                        final result = await Navigator.pushNamed(
+                          context,
+                          '/text_review',
+                          arguments: croppedImagePath,
+                        );
+                        if (result != null && mounted) {
+                          Navigator.pop(context, result);
+                        }
                       }
                     }
                   } catch (e) {
