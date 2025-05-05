@@ -1,0 +1,2 @@
+/Users/mobile2/ai_translator/android/app/.cxx/Debug/6q3x2h1b/x86/CMakeFiles/edit_cache.dir
+/Users/mobile2/ai_translator/android/app/.cxx/Debug/6q3x2h1b/x86/CMakeFiles/rebuild_cache.dir

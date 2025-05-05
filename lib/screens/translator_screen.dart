@@ -207,6 +207,16 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          final result = await Navigator.pushNamed(context, '/camera');
+          if (result != null && mounted) {
+            _textController.text = result as String;
+            setState(() {});
+          }
+        },
+        child: const Icon(Icons.camera),
+      ),
     );
   }
 }
